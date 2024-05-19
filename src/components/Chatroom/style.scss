@@ -1,0 +1,11 @@
+.chatroom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 600px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: var(--light-blue);
+  box-shadow: 0 0 10px rgba(black, 0.5);
+}
