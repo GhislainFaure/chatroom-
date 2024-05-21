@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addMessage } from "../../redux";
 import "./style.scss";
@@ -8,6 +8,12 @@ export default function Form() {
   const [text, setText] = useState();
   const dispatch = useDispatch();
 
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   const handleChangeInput = (event) => {
     setText(event.target.value);
   };
@@ -15,6 +21,7 @@ export default function Form() {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(addMessage(text));
+    setText("");
   };
 
   return (
@@ -25,6 +32,7 @@ export default function Form() {
         onChange={handleChangeInput}
         className="form__input"
         placeholder="Saisissez votre message..."
+        ref={inputRef}
       />
       <button className="form__button" type="submit">
         Envoyer

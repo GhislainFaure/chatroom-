@@ -11,7 +11,6 @@ const messageSlice = createSlice({
     { id: 5, author: "bernard ", content: " wesh gros batard ?" },
     { id: 6, author: "Guilux ", content: " wesh gros batard ?" },
   ],
-  newMessage: "",
   reducers: {
     addMessage: (state, action) => {
       const newMessage = {
