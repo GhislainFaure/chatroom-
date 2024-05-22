@@ -2,6 +2,7 @@
   position: fixed;
   right: 0;
   transform: translateX(100%);
+  transition: transform 0.3s ease-out;
   top: 0;
   width: 200px;
   padding: var(--gutter);
@@ -23,6 +24,10 @@
     font-weight: bold;
     color: var(--indigo);
     background-color: white;
+    transition: transform 0.3s ease-out;
+    &:hover {
+      transform: scale(1.1);
+    }
   }
   &__input {
     border: none;
