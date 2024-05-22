@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { combineSlices, configureStore, createSlice } from "@reduxjs/toolkit";
 import { getHighestId } from "./selectors";
 
 const messageSlice = createSlice({
@@ -24,10 +24,22 @@ const messageSlice = createSlice({
 });
 export const { addMessage } = messageSlice.actions;
 
-export const store = configureStore({
-  reducer: {
-    messages: messageSlice.reducer,
+const settingsSlice = createSlice({
+  name: "settings",
+  initialState: {
+    isOpen: false,
+  },
+  reducers: {
+    toggleIsOpen: (state, action) => {
+      state.isOpen = !state.isOpen;
+    },
   },
 });
 
-// function pour ajouter un id dans un tableau d'objets
+export const { toggleIsOpen } = settingsSlice.actions;
+
+const rootReducer = combineSlices(messageSlice, settingsSlice);
+
+export const store = configureStore({
+  reducer: rootReducer,
+});

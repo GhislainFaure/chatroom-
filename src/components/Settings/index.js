@@ -1,12 +1,15 @@
-import { useState } from "react";
+// import { useState } from "react";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
+// import { useSelector } from "react-redux";
+import { toggleIsOpen } from "../../redux";
 
 export default function Settings() {
-  const [isOpen, setisOpen] = useState("false");
-
+  const { isOpen } = useSelector((state) => state.settings);
+  const dispatch = useDispatch();
   const handleClick = () => {
-    setisOpen(!isOpen);
+    dispatch(toggleIsOpen());
   };
   return (
     <div className={isOpen ? "settings" : "settings settings--open"}>
@@ -17,18 +20,16 @@ export default function Settings() {
         <input
           type="email"
           name="email"
-          id="field"
           className="settings__input"
           placeholder="Email"
         />
         <input
           type="password"
           name="password"
-          id="field"
           className="settings__input"
           placeholder="Mot de passe"
         />
-        <button id="field" className="settings__submit" type="submit">
+        <button className="settings__submit" type="submit">
           Envoyer
         </button>
       </form>
