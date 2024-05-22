@@ -35,18 +35,14 @@ const settingsSlice = createSlice({
     toggleIsOpen: (state, action) => {
       state.isOpen = !state.isOpen;
     },
-    changeEmail: (state, action) => {
-      const newEmail = action.payload;
-      state.email = newEmail;
-    },
-    changePassword: (state, action) => {
-      const newPassword = action.payload;
-      state.password = newPassword;
+
+    changeInputValue: (state, action) => {
+      state[action.payload.inputType] = action.payload.inputValue;
     },
   },
 });
 
-export const { toggleIsOpen, changeEmail, changePassword } =
+export const { toggleIsOpen, changeEmail, changePassword, changeInputValue } =
   settingsSlice.actions;
 
 const rootReducer = combineSlices(messageSlice, settingsSlice);
