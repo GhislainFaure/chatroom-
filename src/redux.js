@@ -48,10 +48,15 @@ const settingsSlice = createSlice({
     changeInputValue: (state, action) => {
       state[action.payload.inputType] = action.payload.inputValue;
     },
+    resetInputValues: (state, action) => {
+      state.email = "";
+      state.password = "";
+    },
   },
 });
 
-export const { toggleIsOpen, changeInputValue } = settingsSlice.actions;
+export const { toggleIsOpen, changeInputValue, resetInputValues } =
+  settingsSlice.actions;
 
 const rootReducer = combineSlices(messageSlice, settingsSlice);
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -67,6 +72,8 @@ export const loginMD = (store) => (next) => (action) => {
         .post("http://localhost:3001/login", { email, password })
         .then((response) => store.dispatch(saveUser(response.data.pseudo)))
         .catch((error) => console.log(error));
+      store.dispatch(resetInputValues());
+
       break;
     }
     default:

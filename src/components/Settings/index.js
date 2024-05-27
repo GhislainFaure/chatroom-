@@ -21,8 +21,9 @@ export default function Settings() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(email, password);
+    console.log({ isOpen, email, password });
     dispatch({ type: "LOGIN" });
+    dispatch(toggleIsOpen());
   };
 
   return (
