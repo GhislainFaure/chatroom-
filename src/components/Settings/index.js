@@ -1,12 +1,10 @@
-// import { useState } from "react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.scss";
-// import { useSelector } from "react-redux";
-import { toggleIsOpen, changeInputValue } from "../../redux";
-
+import { toggleIsOpen, changeInputValue, saveUser } from "../../redux";
 export default function Settings() {
   const { isOpen, email, password } = useSelector((state) => state.settings);
+
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -21,12 +19,18 @@ export default function Settings() {
     );
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(email, password);
+    dispatch({ type: "LOGIN" });
+  };
+
   return (
     <div className={isOpen ? "settings settings--open" : "settings"}>
       <button onClick={handleClick} type="button" className="settings__toggler">
         +
       </button>
-      <form className="settings__form">
+      <form className="settings__form" onSubmit={handleSubmit}>
         <input
           value={email}
           onChange={handleChangeInput}

@@ -5,7 +5,7 @@ import { addMessage } from "../../redux";
 import "./style.scss";
 
 export default function Form() {
-  const [text, setText] = useState();
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
 
   const inputRef = useRef();

@@ -5,7 +5,7 @@ import "./style.scss";
 import { useSelector } from "react-redux";
 
 export default function Messages() {
-  const messages = useSelector((state) => state.messages);
+  const messages = useSelector((state) => state.messages.messagesArray);
 
   useEffect(() => {
     // quand le callback de useEffect est executé , on est après le commit
