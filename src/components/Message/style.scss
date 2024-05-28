@@ -14,7 +14,6 @@
     border-radius: 30px;
     min-width: 150px;
     color: var(--blue);
-
     // text-align: center;
     &::before {
       border-color: transparent transparent #fff;
@@ -27,6 +26,23 @@
       width: 0;
       top: -15px;
       left: 30px;
+    }
+  }
+  &--is-mine {
+    margin-bottom: calc(var(--gutter) * 2);
+    text-align: right;
+    .message__author {
+      margin-left: auto;
+      margin-right: calc(var(--gutter) * 2);
+      margin-bottom: var(--gutter);
+    }
+    .message__content {
+      &::before {
+        border-color: transparent transparent transparent #ffffff;
+        border-width: 20px 0 0 20px;
+        left: auto;
+        right: 30px;
+      }
     }
   }
 }
